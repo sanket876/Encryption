@@ -1,7 +1,7 @@
 <?php
 /**
  * Cryptography
- * Description:- This class will encrypt the data using PHP and decrypt using MySQL AES_DECRYPT
+ * Description:- This class will encrypt the data using PHP and decrypt using MySQL AES_DECRYPT or vice-versa
  */
 class Encryption
 {
@@ -39,8 +39,6 @@ class Encryption
 
 	public function cryptography()
 	{
-		echo "<pre>";
-
 		$encrypt_the_string = 'This is very big string for very big encryption';
 		echo $encrypt_the_string;
 		echo "<br><br>";
@@ -52,7 +50,6 @@ class Encryption
 		echo "<br>";
 		echo base64_encode($a);
 
-		// $result = DB::select(array(DB::expr('AES_ENCRYPT("TEST")')))
 		$query = "SELECT AES_ENCRYPT('test', '".$this->KEY."') AS enc";
 		$result = DB::query(Database::SELECT, $query)->execute()->as_array();
 		$b = $result[0]['enc'];
@@ -60,7 +57,6 @@ class Encryption
 		echo $b;
 		echo "<br><br>";
 		echo base64_encode($b);
-
 
 
 		// Group 2
